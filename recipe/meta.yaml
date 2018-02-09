@@ -9,7 +9,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pilotfiber.dl.sourceforge.net/project/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://downloads.sourceforge.net/project/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - fix-tests.patch
