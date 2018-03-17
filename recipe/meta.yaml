@@ -1,8 +1,8 @@
 # TODO: this package should be marked as conflicting with pgplot.
 
 {% set name = 'giza' %}
-{% set version = '0.9.4' %}
-{% set sha256 = "1615bd177a708be6d1c87b404eeedd13447de17d344f817b5a1a0e4565addf41" %}
+{% set version = "0.9.5" %}
+{% set sha256 = "0151be118d8249161b1bc547ef4dd5f28f6340106f1e209e71ad8a0b6617b7b1" %}
 
 package:
   name: {{ name|lower }}
@@ -16,7 +16,7 @@ source:
     - disable-macos-tests.patch  # [osx]
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
