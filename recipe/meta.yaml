@@ -21,26 +21,26 @@ build:
 
 requirements:
   build:
-    - gcc  # [osx]
     - pkg-config
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+  host:
     - pthread-stubs
-    - toolchain
-    - cairo 1.14.*
+    - cairo
     - xorg-libice 1.0.*
     - xorg-libsm 1.2.*
     - xorg-libx11 1.6.*
     - xorg-libxext 1.3.*
     - xorg-libxrender 0.9.*
-    - xz 5.2.*
+    - xz
   run:
-    - cairo 1.14.*
-    - libgfortran  # [unix]
+    - cairo
     - xorg-libice 1.0.*
     - xorg-libsm 1.2.*
     - xorg-libx11 1.6.*
     - xorg-libxext 1.3.*
     - xorg-libxrender 0.9.*
-    - xz 5.2.*
+    - xz
 
 test:
   # note: most tests are run in build.sh
