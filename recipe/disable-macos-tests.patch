@@ -1,8 +1,8 @@
 diff --git a/test/C/Makefile.in b/test/C/Makefile.in
-index 7041dd5..0a40ad9 100644
+index 205d6c0..581e241 100644
 --- a/test/C/Makefile.in
 +++ b/test/C/Makefile.in
-@@ -102,12 +102,11 @@ CONFIG_HEADER = $(top_builddir)/config.h
+@@ -102,17 +102,15 @@ CONFIG_HEADER = $(top_builddir)/config.h
  CONFIG_CLEAN_FILES =
  CONFIG_CLEAN_VPATH_FILES =
  am__EXEEXT_1 = test-arrow$(EXEEXT) test-band$(EXEEXT) \
@@ -17,3 +17,9 @@ index 7041dd5..0a40ad9 100644
  	test-pdf$(EXEEXT) test-png$(EXEEXT) test-points$(EXEEXT) \
  	test-qtext$(EXEEXT) test-rectangle$(EXEEXT) \
  	test-set-line-width$(EXEEXT) test-svg$(EXEEXT) \
+-	test-vector$(EXEEXT) test-window$(EXEEXT) \
+-	test-XOpenDisplay$(EXEEXT)
++	test-vector$(EXEEXT) test-window$(EXEEXT)
+ test_XOpenDisplay_SOURCES = test-XOpenDisplay.c
+ test_XOpenDisplay_OBJECTS = test-XOpenDisplay.$(OBJEXT)
+ test_XOpenDisplay_LDADD = $(LDADD)
