@@ -1,22 +1,21 @@
 # TODO: this package should be marked as conflicting with pgplot.
 
 {% set name = 'giza' %}
-{% set version = "0.9.5" %}
-{% set sha256 = "0151be118d8249161b1bc547ef4dd5f28f6340106f1e209e71ad8a0b6617b7b1" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://downloads.sourceforge.net/project/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://downloads.sourceforge.net/project/{{ name }}/v{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 69f6b8187574eeb66ec3c1edadf247352b0ffebc6fc6ffbb050bafd324d3e300
   patches:
     - fix-tests.patch
     - disable-macos-tests.patch  # [osx]
 
 build:
-  number: 1002
+  number: 0
   skip: true  # [win]
 
 requirements:
