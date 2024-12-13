@@ -3,9 +3,9 @@ About giza-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/giza-feedstock/blob/main/LICENSE.txt)
 
-Home: http://giza.sourceforge.net/
 
-Package license: GPLv2
+
+Package license: GPL-2.0-only
 
 Summary: A drop-in replacement for PGPLOT using C and Cairo.
 
