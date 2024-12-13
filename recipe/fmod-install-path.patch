@@ -1,0 +1,17 @@
+The module install path used by giza's build system fails badly for us.
+The `hdf5` package installs modules into $PREFIX/incldue, so let's do
+that too.
+
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 8a57fa3..d04946a 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -539,7 +539,7 @@ libpgplot_la_LDFLAGS = $(libcpgplot_la_LDFLAGS)
+ include_HEADERS = cpgplot.h giza.h giza-shared.h giza-version.h giza-fortran.F90
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = cpgplot.pc giza.pc pgplot.pc
+-fmoddir = $(libdir)/$(FC)/modules
++fmoddir = $(includedir)
+ fmod_DATA = giza.mod
+ all: all-am
+ 

@@ -1,17 +1,18 @@
 # TODO: this package should be marked as conflicting with pgplot.
 
-{% set name = 'giza' %}
-{% set version = "1.1.0" %}
+{% set name = "giza" %}
+{% set version = "1.3.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://downloads.sourceforge.net/project/{{ name }}/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 69f6b8187574eeb66ec3c1edadf247352b0ffebc6fc6ffbb050bafd324d3e300
+  url: https://downloads.sourceforge.net/project/{{ name }}/v{{ version }}/{{ name }}-v{{ version }}.tar.gz
+  sha256: 87f14679923ba729a13bc18026178be684d7620aaf0a5eb4172a4a1c9c87c033
   patches:
     - fix-tests.patch
+    - fmod-install-path.patch
     - disable-macos-tests.patch  # [osx]
 
 build:
@@ -20,39 +21,35 @@ build:
 
 requirements:
   build:
+    - make
     - pkg-config
-    - {{ compiler('fortran') }}
-    - {{ compiler('c') }}
+    - {{ compiler("fortran") }}
+    - {{ compiler("c") }}
+    - {{ stdlib("c") }}
   host:
     - pthread-stubs
     - cairo
-    - xorg-libice 1.0.*
-    - xorg-libsm 1.2.*
-    - xorg-libx11 1.6.*
-    - xorg-libxext 1.3.*
-    - xorg-libxrender 0.9.*
-    - xz
-  run:
-    - cairo
-    - xorg-libice 1.0.*
-    - xorg-libsm 1.2.*
-    - xorg-libx11 1.6.*
-    - xorg-libxext 1.3.*
-    - xorg-libxrender 0.9.*
-    - xz
+    - xorg-xorgproto
+    - xorg-libice
+    - xorg-libsm
+    - xorg-libx11
+    - xorg-libxext
+    - xorg-libxrender
+    - liblzma-devel
+    # needed for pkg-config files:
+    - expat
+    - zlib
 
 test:
   # note: most tests are run in build.sh
   commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
     - test -e $PREFIX/lib/libgiza$SHLIB_EXT
     - test -e $PREFIX/lib/libpgplot$SHLIB_EXT
     - test -e $PREFIX/lib/libcpgplot$SHLIB_EXT
 
 about:
   home: http://giza.sourceforge.net/
-  license: GPLv2
+  license: GPL-2.0-only
   license_file: COPYING
   summary: A drop-in replacement for PGPLOT using C and Cairo.
 
