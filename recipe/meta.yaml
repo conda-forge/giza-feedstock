@@ -12,6 +12,7 @@ source:
   sha256: 87f14679923ba729a13bc18026178be684d7620aaf0a5eb4172a4a1c9c87c033
   patches:
     - fix-tests.patch
+    - fmod-install-path.patch
     - disable-macos-tests.patch  # [osx]
 
 build:

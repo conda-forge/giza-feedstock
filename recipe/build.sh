@@ -56,4 +56,5 @@ EOF
 
 make install
 
-rm -rf $PREFIX/share/doc/giza
+cd $PREFIX
+rm -rf share/doc/giza var/cache/fontconfig
