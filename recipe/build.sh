@@ -5,9 +5,11 @@ set -o pipefail
 
 configure_args=(
     --prefix=$PREFIX
+    --disable-static
 )
 
 ./configure "${configure_args[@]}" || { cat config.log ; exit 1 ; }
+
 make # note: parallel build doesn't work reliably due to lack of rule defining creation of `giza.mod`
 
 make check
@@ -54,6 +56,4 @@ EOF
 
 make install
 
-cd $PREFIX
-find . '(' -name '*.la' -o -name '*.a' ')' -delete
-rm -rf share/doc/giza
+rm -rf $PREFIX/share/doc/giza
