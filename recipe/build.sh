@@ -1,4 +1,6 @@
 #! /bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./build
 
 set -e
 set -o pipefail
@@ -12,7 +14,9 @@ configure_args=(
 
 make # note: parallel build doesn't work reliably due to lack of rule defining creation of `giza.mod`
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:-}" != "" ]]; then
 make check
+fi
 
 ctests="
 arrow
