@@ -39,6 +39,7 @@ requirements:
     - liblzma-devel
     # needed for pkg-config files:
     - expat
+    - freetype
     - zlib
 
 test:
