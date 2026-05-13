@@ -95,20 +95,20 @@ index c5795b1..5f1d378 100644
 +   return 0;
  }
 diff --git a/test/C/test-error-bars.c b/test/C/test-error-bars.c
-index c002089..58450a1 100644
+index 497777c..58f4b40 100644
 --- a/test/C/test-error-bars.c
 +++ b/test/C/test-error-bars.c
-@@ -71,4 +71,5 @@ main ()
+@@ -73,4 +73,5 @@ main ()
    giza_points (2, xpts, ypts, 178);
  
    giza_close_device ();
 +  return 0;
  }
 diff --git a/test/C/test-format-number.c b/test/C/test-format-number.c
-index 4378455..204bd27 100644
+index 7b9b114..77402e6 100644
 --- a/test/C/test-format-number.c
 +++ b/test/C/test-format-number.c
-@@ -149,5 +149,5 @@ main ()
+@@ -152,5 +152,5 @@ main ()
    giza_format_number(x, 3, string);
    printf("%e: %s \n",x,string);
  */
@@ -197,10 +197,10 @@ index 91ce8d8..fa41845 100644
  
  void
 diff --git a/test/C/test-qtext.c b/test/C/test-qtext.c
-index a74adb6..f3f2fbc 100644
+index 9fd53d6..b9a8e9c 100644
 --- a/test/C/test-qtext.c
 +++ b/test/C/test-qtext.c
-@@ -147,5 +147,6 @@ main ()
+@@ -150,5 +150,6 @@ main ()
    printf ("Y[0] = %f, Y[1] = %f, Y[2] = %f, Y[3] = %f\n", ybox[0], ybox[1], ybox[2], ybox[3]);
  
    giza_close_device ();
@@ -266,11 +266,15 @@ index 75f17e2..a13023e 100644
  
  double sinx(double *x) {
 diff --git a/test/C/test-vector.c b/test/C/test-vector.c
-index 0b459df..c4eab08 100644
+index 0b459df..558e065 100644
 --- a/test/C/test-vector.c
 +++ b/test/C/test-vector.c
-@@ -55,4 +55,5 @@ main ()
-   giza_vector_float (n, m, hori, vert, 0, 1, 0, 1, scale, 0, affine, 1000.);
+@@ -52,7 +52,8 @@ main ()
+   affine[4] = 0.;
+   affine[5] = 0.;
+ 
+-  giza_vector_float (n, m, hori, vert, 0, 1, 0, 1, scale, 0, affine, 1000.);
++  giza_vector_float (n, m, (const float *) hori, (const float *) vert, 0, 1, 0, 1, scale, 0, affine, 1000.);
  
    giza_close_device ();
 +  return 0;

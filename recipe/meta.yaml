@@ -16,13 +16,14 @@ source:
     - disable-macos-tests.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
     - make
     - pkg-config
+    - gnuconfig  # [unix]
     - {{ compiler("fortran") }}
     - {{ compiler("c") }}
     - {{ stdlib("c") }}
@@ -38,6 +39,7 @@ requirements:
     - liblzma-devel
     # needed for pkg-config files:
     - expat
+    - freetype
     - zlib
 
 test:
