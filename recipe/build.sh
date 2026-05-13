@@ -15,48 +15,48 @@ configure_args=(
 make # note: parallel build doesn't work reliably due to lack of rule defining creation of `giza.mod`
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:-}" != "" ]]; then
-make check
+    make check
+
+    ctests="
+    arrow
+    band
+    colour-index
+    error-bars
+    format-number
+    line-cap
+    line-style
+    points
+    qtext
+    rectangle
+    set-line-width
+    vector
+    window
+    "
+
+    for t in $ctests ; do
+        echo /png |test/C/test-$t
+    done
+
+    ./test/C/test-change-page <<EOF
+    /png
+    /pdf
+    /svg
+EOF
+    ./test/C/test-environment <<EOF
+    /png
+    /png
+    /png
+    /png
+    /png
+    /png
+EOF
+    ./test/C/test-pdf
+    ./test/C/test-png
+    ./test/C/test-svg
+    ./test/F90/test-2D
+    ./test/F90/test-fortran
+    # other fortran tests require X
 fi
-
-ctests="
-arrow
-band
-colour-index
-error-bars
-format-number
-line-cap
-line-style
-points
-qtext
-rectangle
-set-line-width
-vector
-window
-"
-
-for t in $ctests ; do
-    echo /png |test/C/test-$t
-done
-
-./test/C/test-change-page <<EOF
-/png
-/pdf
-/svg
-EOF
-./test/C/test-environment <<EOF
-/png
-/png
-/png
-/png
-/png
-/png
-EOF
-./test/C/test-pdf
-./test/C/test-png
-./test/C/test-svg
-./test/F90/test-2D
-./test/F90/test-fortran
-# other fortran tests require X
 
 make install
 
